@@ -1,0 +1,11 @@
+fields:
+  content_field:
+    type: text
+    display: 'Content field'
+    instructions: 'The main content field where your forms could be stored in. E.g: *replicator*, *the_content* or *my_bard*.'
+    validate: required
+  forms:
+    type: list
+    display: 'Forms to check for'
+    instructions: 'The plugin will check for forms added to the pages content. These are the names fields that contain forms.'
+    validate: required

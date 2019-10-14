@@ -1,0 +1,5 @@
+name: Auto Caching Excludes
+version: '1.0.0'
+description: Listens for page edits and updates caching excludes when there are forms on the page.
+developer: Studio 1902
+developer_url: https://studio1902.nl
