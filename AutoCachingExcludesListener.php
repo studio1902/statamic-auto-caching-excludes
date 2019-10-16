@@ -41,25 +41,21 @@ class AutoCachingExcludesListener extends Listener
         if($content_field) {
             foreach ($content_field as $content)
             {
-                if(count(array_intersect($content, $forms)) > 0)
-                {
+                if(in_array($content['type'], $forms)) {
                     $form_included = true;
                 } 
             }
             if($form_included) {
-                foreach($locales as $locale) 
-                {
+                foreach($locales as $locale) {
                     $this->addToCachingConfig($this->entry->in($locale)->uri());
                 }
             } else {
-                foreach($locales as $locale) 
-                {
+                foreach($locales as $locale) {
                     $this->removeFromCachingConfig($this->entry->in($locale)->uri());
                 }
             }
         } else {
-            foreach($locales as $locale) 
-            {
+            foreach($locales as $locale) {
                 $this->removeFromCachingConfig($this->entry->in($locale)->uri());
             }
         }
@@ -72,8 +68,7 @@ class AutoCachingExcludesListener extends Listener
 
     private function addToCachingConfig($url) {
         $static_caching_exclude = $this->caching_config['static_caching_exclude'];
-        if (in_array($url, $static_caching_exclude) == false)
-        {
+        if (in_array($url, $static_caching_exclude) == false) {
             $static_caching_exclude[] = $url;
         } 
         $this->caching_config['static_caching_exclude'] = $static_caching_exclude;
@@ -81,8 +76,7 @@ class AutoCachingExcludesListener extends Listener
     
     private function removeFromCachingConfig($url) {
         $static_caching_exclude = $this->caching_config['static_caching_exclude'];
-        if (in_array($url, $static_caching_exclude) == true)
-        {
+        if (in_array($url, $static_caching_exclude) == true) {
             unset($static_caching_exclude[array_search($url, $static_caching_exclude)]);
         }
         $this->caching_config['static_caching_exclude'] = $static_caching_exclude;
