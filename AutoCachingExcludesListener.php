@@ -61,9 +61,6 @@ class AutoCachingExcludesListener extends Listener
         }
         
         $this->saveCachingConfig();
-        
-        Cache::clear();
-        Stache::clear();
     }
 
     private function addToCachingConfig($url) {
